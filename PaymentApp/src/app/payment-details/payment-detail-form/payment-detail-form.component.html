@@ -1,0 +1,73 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)">
+  <input
+    type="hidden"
+    name="paymentDetailId"
+    [value]="service.formData.PaymentDetailId"
+  />
+  <div class="row">
+    <div class="mb-3 col-md-12">
+      <label for="cardOwnerName" class="form-label">Card owner name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="cardOwnerName"
+        placeholder="Card owner name"
+        #cardOwnerName="ngModel"
+        [(ngModel)]="service.formData.CardOwnerName"
+        required
+        [class.invalid]="cardOwnerName.invalid && cardOwnerName.touched"
+      />
+    </div>
+    <div class="mb-3 col-md-12">
+      <label for="cardNumber" class="form-label">Card number</label>
+      <input
+        type="text"
+        class="form-control"
+        name="cardNumber"
+        placeholder="Card number"
+        #cardNumber="ngModel"
+        [(ngModel)]="service.formData.CardNumber"
+        required
+        maxlength="16"
+        minlength="16"
+        [class.invalid]="cardNumber.invalid && cardNumber.touched"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mb-3 col-md-6">
+      <label for="securityCode" class="form-label">Security code</label>
+      <input
+        type="password"
+        class="form-control"
+        name="securityCode"
+        placeholder="Security code"
+        #securityCode="ngModel"
+        [(ngModel)]="service.formData.SecurityCode"
+        required
+        maxlength="3"
+        minlength="3"
+        [class.invalid]="securityCode.invalid && securityCode.touched"
+      />
+    </div>
+    <div class="mb-3 col-md-6">
+      <label for="expirationDate" class="form-label">Valid through</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="MM/YY"
+        name="expirationDate"
+        #expirationDate="ngModel"
+        [(ngModel)]="service.formData.ExpirationDate"
+        required
+        maxlength="5"
+        minlength="5"
+        [class.invalid]="expirationDate.invalid && expirationDate.touched"
+      />
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+    Submit
+  </button>
+</form>

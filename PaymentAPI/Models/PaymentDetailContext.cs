@@ -12,6 +12,6 @@ namespace PaymentAPI.Models
         {
         }
 
-        DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public DbSet<PaymentDetail> PaymentDetails { get; set; }
     }
 }
